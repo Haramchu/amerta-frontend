@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import "../../styles/SalesFeature.css";
 import purchaseIcon from "../../assets/Purchase.png";
 import purchaseOrderIcon from "../../assets/Purchase Order.png";
@@ -9,6 +10,12 @@ import invoiceIcon from "../../assets/Purchase Invoice.png";
 
 const PurchaseFeature = () => {
     const navigate = useNavigate();
+
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        if (!token) navigate("/");
+    }, [navigate, token]);
 
     return (
         <div className="sales-feature-container">

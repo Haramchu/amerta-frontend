@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/AddEmployee.css";
@@ -17,6 +17,10 @@ const AddEmployee = () => {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        if (!token) navigate("/");
+    }, [navigate, token]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
