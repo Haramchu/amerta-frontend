@@ -10,6 +10,7 @@ import UpdateGoods from "./components/GoodsAndServices/UpdateGoods";
 import Navbar from "./components/Navbar";
 import Company from "./components/Company";
 import Employee from "./components/Employee";
+import EmployeeDetail from "./components/EmployeeDetail";
 import CreatePengeluaran from "./components/Pengeluaran";
 import Finance from "./components/Finance";
 import Expense from "./components/Expense";
@@ -18,10 +19,13 @@ import GoodsTransportDetail from "./components/GoodsTransportDetail";
 import Revenue from "./components/Revenue";
 import RevenueDetail from "./components/RevenueDetail";
 import AddEmployee from "./components/AddEmployee";
+import UpdateEmployee from "./components/UpdateEmployee";
 import AddGoodsTransport from "./components/AddGoodsTransport";
 import SalesFeature from "./components/Sales/SalesFeature";
 import Customer from "./components/Customer";
 import AddCustomer from "./components/AddCustomer";
+import UpdateCustomer from "./components/UpdateCustomer";
+import CustomerDetail from "./components/CustomerDetail";
 import Sales from "./components/Sales/Sales";
 import SalesOrder from "./components/Sales/SalesOrder";
 
@@ -59,6 +63,10 @@ import SalesInvoice from "./components/SalesInvoice";
 import SalesInvoiceDetail from "./components/SalesInvoiceDetail";
 import DetailPurchase from "./components/Purchase/DetailPurchase";
 import DetailSales from "./components/Sales/DetailSales";
+import Dashboard from "./components/Dashboard";
+
+import Profile from "./components/Profile";
+import UpdateProfile from "./components/UpdateProfile";
 
 function Layout() {
     const location = useLocation();
@@ -85,7 +93,9 @@ function Layout() {
 
                 <Route path="/company" element={<Company />} />
                 <Route path="/employee" element={<Employee />} />
+                <Route path="/employee/:id" element={<EmployeeDetail />} />
                 <Route path="/employee/add" element={<AddEmployee />} />
+                <Route path="/employee/update/:id" element={<UpdateEmployee />} />
 
                 <Route path="/create-pengeluaran" element={<CreatePengeluaran />} />
                 <Route path="/create-penerimaan" element={<CreatePenerimaan />} />
@@ -103,6 +113,8 @@ function Layout() {
         
                 <Route path="/customer" element={<Customer />} />
                 <Route path="/customer/add" element={<AddCustomer />} />
+                <Route path="/customer/update/:id" element={<UpdateCustomer />} />
+                <Route path="/customer/:id" element={<CustomerDetail />} />
 
                 <Route path="/sales" element={<SalesFeature />} />
                 <Route path="/sales/completed" element={<Sales/>} />
@@ -144,6 +156,10 @@ function Layout() {
 
                 <Route path="/delivery-invoice" element={<PurchaseInvoice />} />
                 <Route path="/purchase-invoice/detail/:id" element={<PurchaseInvoiceDetail />} />
+
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/profile/:id" element={<Profile />} />
+                <Route path="/profile/update-password/:id" element={<UpdateProfile />} />
             </Routes>
         </div>
     );

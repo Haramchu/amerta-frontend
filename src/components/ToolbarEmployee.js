@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import "../styles/ToolbarGoods.css"; // ✅ Reuse style ToolbarGoods
+import "../styles/ToolbarGoods.css"; // gunakan CSS yang sudah kamu berikan
+import addIcon from "../assets/Add.png";
 import refreshIcon from "../assets/Refresh.png";
 import SearchIcon from "@mui/icons-material/Search";
 
-const ToolbarShipping = ({ onRefresh, onFilter, onSearch, selectedCategory, searchTerm }) => {
+const ToolbarEmployee = ({ onAdd, onRefresh, onFilter, onSearch, selectedCategory, searchTerm }) => {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
@@ -20,13 +21,17 @@ const ToolbarShipping = ({ onRefresh, onFilter, onSearch, selectedCategory, sear
     onFilter(e.target.value);
   };
 
-  const getPlaceholder = () => {
-    if (selectedCategory === "shippingfee") return "Contoh: 12500,95";
-    return `Search by ${selectedCategory}`;
-  };
-
   return (
     <div className="toolbar-goods">
+      {/* Tombol Tambah */}
+      <div className="toolbar-goods-item">
+        <button className="toolbar-goods-btn add-btn" onClick={onAdd}>
+          <img src={addIcon} alt="Add" />
+        </button>
+        <p className="toolbar-goods-text">Add</p>
+      </div>
+
+      {/* Tombol Refresh */}
       <div className="toolbar-goods-item">
         <button className="toolbar-goods-btn white-btn" onClick={onRefresh}>
           <img src={refreshIcon} alt="Refresh" />
@@ -34,27 +39,28 @@ const ToolbarShipping = ({ onRefresh, onFilter, onSearch, selectedCategory, sear
         <p className="toolbar-goods-text">Refresh</p>
       </div>
 
-      <div className="toolbar-goods-item filter-container">
+      {/* Dropdown Filter */}
+      <div className="toolbar-goods-item">
         <select
           className="toolbar-goods-dropdown"
           onChange={handleCategoryChange}
           value={selectedCategory}
         >
           <option value="all">Filter: All</option>
-          <option value="id">Filter: ID Shipping</option>
-          <option value="customer">Filter: Nama Customer</option>
-          <option value="date">Filter: Tanggal Pengiriman</option>
-          <option value="resi">Filter: Nomor Resi</option>
-          <option value="shippingfee">Filter: Biaya Pengiriman</option>
-          <option value="status">Filter: Status Pengiriman</option>
+          <option value="nama">Filter: Nama</option>
+          <option value="role">Filter: Role</option>
+          <option value="email">Filter: Email</option>
+          <option value="no_hp">Filter: Handphone</option>
+          <option value="wa">Filter: WhatsApp</option>
         </select>
       </div>
 
+      {/* Search Bar */}
       <div className="toolbar-goods-search-container">
         <input
           type="text"
-          placeholder={getPlaceholder()}
           className="toolbar-goods-search-bar"
+          placeholder={`Search by ${selectedCategory}`}
           value={inputValue}
           onChange={handleSearchChange}
         />
@@ -64,4 +70,4 @@ const ToolbarShipping = ({ onRefresh, onFilter, onSearch, selectedCategory, sear
   );
 };
 
-export default ToolbarShipping;
+export default ToolbarEmployee;
