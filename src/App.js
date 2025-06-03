@@ -67,6 +67,7 @@ import Dashboard from "./components/Dashboard";
 
 import Profile from "./components/Profile";
 import UpdateProfile from "./components/UpdateProfile";
+import UpdatePassword from "./components/UpdatePassword";
 
 function Layout() {
     const location = useLocation();
@@ -96,6 +97,7 @@ function Layout() {
                 <Route path="/employee/:id" element={<EmployeeDetail />} />
                 <Route path="/employee/add" element={<AddEmployee />} />
                 <Route path="/employee/update/:id" element={<UpdateEmployee />} />
+                <Route path="/employee/update-password/:id" element={<UpdatePassword />} />
 
                 <Route path="/create-pengeluaran" element={<CreatePengeluaran />} />
                 <Route path="/create-penerimaan" element={<CreatePenerimaan />} />
