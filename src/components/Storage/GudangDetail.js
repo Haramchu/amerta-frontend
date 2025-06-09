@@ -9,6 +9,7 @@ const GudangDetail = () => {
     const [error, setError] = useState(null);
     const { namaGudang } = useParams();
     const navigate = useNavigate();
+    const role = localStorage.getItem("role")?.toLowerCase();
 
     const fetchGudangDetail = useCallback(async (token) => {
         setLoading(true);
@@ -99,9 +100,11 @@ const GudangDetail = () => {
                     <button className="back-btn" onClick={handleBack}>
                         Kembali
                     </button>
+                    {!["administrasi", "komisaris"].includes(role) && (
                     <button className="update-btn" onClick={handleUpdateGudang}>
                         Update Gudang
                     </button>
+                    )}
                 </div>
 
                 <div className="detail-card">
